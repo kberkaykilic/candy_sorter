@@ -14,13 +14,12 @@ test_images_path = './test_images'
 if not os.path.exists(test_images_path):
     print(f"Hata: Test resimleri dizini '{test_images_path}' bulunamadı!")
 else:
-    seen_files = set()  # Zaten görülen dosyaları kaydedeceğiz
+    seen_files = set()
     for img_name in os.listdir(test_images_path):
         img_path = os.path.join(test_images_path, img_name)
 
-        # Dosya uzantısının geçerli bir resim olup olmadığını kontrol et
         if img_name.lower().endswith(('.png', '.jpg', '.jpeg')) and img_name not in seen_files:
-            seen_files.add(img_name)  # Bu dosyayı bir kez işlediğimizi kaydediyoruz
+            seen_files.add(img_name)
 
             img = cv2.imread(img_path)
             img_resized = cv2.resize(img, (150, 150))
